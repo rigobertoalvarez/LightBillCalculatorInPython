@@ -11,7 +11,7 @@ aepcent = tdu("AEP Central", 4.79, 0.040)
 aepnort = tdu("AEP North", 4.79, 0.036)
 tnmp = tdu ("TNMP", 7.85, 0.0403)
 tduArray = [ctp, onc, aepcent, aepnort, tnmp]
-
+global t1
 root = Tk()
 root.title('Light bill estimator')
 
@@ -50,12 +50,12 @@ def click1(value):
     selected.config(text=t1.name,fg='red')
     print(t1.name,t1.e,t1.b)
 
-
 b1.bind('<Button-1>', lambda event, *args: click1(ctp))
 b2.bind('<Button-1>', lambda event, *args: click1(onc))
 b3.bind('<Button-1>', lambda event, *args: click1(aepcent))
 b4.bind('<Button-1>', lambda event, *args: click1(aepnort))
 b5.bind('<Button-1>', lambda event, *args: click1(onc))
+
 
 
 ################## label to select plan type ################
@@ -124,7 +124,7 @@ def handle_click(event):
         c = c / 100
         lb = (light.getbill(c, k, t1.e, b, t1.b))
 
-        billF["text"] = "{lb:.2f}"
+        billF["text"] = f"{lb:.2f}"
 
     except ValueError:
         billF.config(text="Values are invalid, try again...")
